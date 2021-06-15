@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN / DENY ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/admin/css/base1.css">
+    <title>login登录页</title>
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+    <div class="t_container">
+        <div id="mydiv" style="height:500px;padding:0;margin:0;position: absolute;z-index:1;"></div>
+        <form action="{{ url_for('user.index') }}" class="t_main">
+            <ul>
+                <li>
+                    <input class="user" type="text" placeholder="请输入您的用户名">
+                </li>
+                <li>
+                    <input type="text" placeholder="请输入您的密码">
+                </li>
+                <li>
+                    <button type="submit" class="t_btn">登 录</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+    
+</body>
+</html>

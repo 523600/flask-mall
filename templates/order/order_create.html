@@ -1,0 +1,83 @@
+{% extends 'user/user_create.html' %}
+
+{% block table %}
+    <div class="title-box">
+        <h5>新增订单</h5>
+    </div>
+    <div class="form-box">
+        <div class="row">
+            <div class="col-5">
+                <form action="{{ url_for('order.add') }}" method="post">
+
+                    <div class="form-group">
+                        <label>订单号</label>
+                        <input type="text" name="ordercode" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>发货地址</label>
+                        <input type="text" name="shipaddress" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>收件人手机号</label>
+                        <input type="number" name="mobile" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+{#                    <div class="form-group">#}
+{#                        <label>创建时间</label>#}
+{#                        <input type="text" name="createdate" class="form-control">#}
+{#                        <small class="form-text text-muted"></small>#}
+{#                    </div>#}
+
+                    <div class="form-group">
+                        <label>用户姓名</label>
+                        <input type="text" name="uname" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>店铺名</label>
+                        <input type="text" name="storename" class="form-control" >
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>订单状态</label>
+                        <input type="text" name="status" class="form-control" placeholder="未发货/已收货/运输中">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>收货地址</label>
+                        <input type="text" name="receiveraddress" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>商品名称</label>
+                        <input type="text" name="pname" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                     <div class="form-group">
+                        <label>订单数量</label>
+                        <input type="number" name="amount" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+                     <div class="submit-box">
+                        <button type="submit" class="btn btn-primary">确定提交</button>
+                        <button type="button" onclick="window.history.back()" class="btn btn-outline-secondary">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

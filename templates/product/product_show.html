@@ -1,0 +1,62 @@
+{% extends 'user/user_index.html' %}
+
+
+
+{% block table %}
+<table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">商品名</th>
+                    <th scope="col">介绍</th>
+                    <th scope="col">原价</th>
+                    <th scope="col">折后价</th>
+                    <th scope="col">存货量</th>
+                    <th scope="col">所属商店</th>
+                    <th scope="col">分类于</th>
+                    <th scope="col">属性</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for product in products %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.subtitle }}</td>
+                    <td>{{ product.orignalprice }}</td>
+                    <td>{{ product.promoteprice }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>{{ product.store.storename }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td><a href="{{ url_for('product.img_show') }}?pid={{ product.id }}">图片</a></td>
+                    <td><a href="{{ url_for('property.value_show') }}?pid={{ product.id }}">属性</a></td>
+
+                    <td>
+                        <a class="del" href="{{ url_for('product.delete') }}?id={{ product.id }}">删除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+{% endblock %}
+
+{% block form_search %}
+     <form class="form-inline float-left" action="{{ url_for("product.search") }}" method="get">
+        <div class="form-group">
+            <input type="text" name="search" value="" class="form-control" placeholder="商品名">
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="iconfont"></i>搜索</button>
+     </form>
+{% endblock %}
+
+{% block count %}
+    <span class="total float-left page-link">共{{ products | length }}条</span>
+{% endblock %}
+
+{% block add_btn %}
+    <a class="btn btn-primary float-right" href="{{ url_for("product.add") }}"><i class="iconfont"></i>新增</a>
+{% endblock %}

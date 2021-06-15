@@ -1,0 +1,60 @@
+{% extends 'user/user_index.html' %}
+
+{% block table %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">订单号</th>
+                    <th scope="col">发货地址</th>
+                    <th scope="col">收件人手机号</th>
+                    <th scope="col">创建时间</th>
+                    <th scope="col">用户id</th>
+                    <th scope="col">店铺id</th>
+                    <th scope="col">订单状态</th>
+                    <th scope="col">收货确认时间</th>
+                    <th scope="col">收货地址</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for order in orders %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ order.ordercode }}</td>
+                    <td>{{ order.shipaddress }}</td>
+                    <td>{{ order.mobile }}</td>
+                    <td>{{ order.createdate }}</td>
+                    <td>{{ order.uid }}</td>
+                    <td>{{ order.sid }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.confirmdate }}</td>
+                    <td>{{ order.receiveraddress }}</td>
+
+                    <td>
+
+                        <a class="del" href="{{ url_for('order.delete') }}?id={{ order.id }}">删除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+{% endblock %}
+
+{% block form_search %}
+        <form class="form-inline float-left" action="{{ url_for("order.search") }}" method="get">
+            <div class="form-group">
+                <input type="text" name="search" value="" class="form-control" placeholder="订单号">
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="iconfont"></i>搜索</button>
+        </form>
+{% endblock %}
+
+{% block add_btn %}
+    <a class="btn btn-primary float-right" href="{{ url_for("order.add") }}"><i class="iconfont"></i>新增</a>
+{% endblock %}
+
+  {% block count %}
+            <span class="total float-left page-link">共{{ orders | length }}条</span>
+{% endblock %}

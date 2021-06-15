@@ -1,0 +1,50 @@
+{% extends 'user/user_index.html' %}
+
+{% block table %}
+  <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">CID</th>
+                    <th scope="col">分类名</th>
+                    <th scope="col">属性</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for category in categories %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+
+                    <td><a href="{{ url_for('product.show') }}?cid={{ category.id }}">{{ category.name }}</a></td>
+
+                    <td><a href="{{ url_for('property.show') }}?cid={{ category.id }}">属性</a></td>
+
+                    <td>
+                        <a href="">修改</a>
+                        <a class="del" href="{{ url_for('category.delete') }}?id={{ category.id }}">删除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+{% endblock %}
+
+{% block form_search %}
+     <form class="form-inline float-left" action="{{ url_for("category.search") }}" method="get">
+        <div class="form-group">
+            <input type="text" name="search" value="" class="form-control" placeholder="分类名">
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="iconfont"></i>搜索</button>
+     </form>
+{% endblock %}
+
+{% block add_btn %}
+    <a class="btn btn-primary float-right" href="{{ url_for("category.add") }}"><i class="iconfont"></i>新增</a>
+
+{% endblock %}
+
+{% block count %}
+     <span class="total float-left page-link">共{{ categories | length }}条</span>
+{% endblock %}

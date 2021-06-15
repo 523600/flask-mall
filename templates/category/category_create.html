@@ -1,0 +1,25 @@
+{% extends 'user/user_create.html' %}
+
+{% block table %}
+        <div class="title-box">
+            <h5>新增用户</h5>
+        </div>
+        <div class="form-box">
+            <div class="row">
+                <div class="col-5">
+                    <form action="{{ url_for('category.add') }}" method="post">
+                        <div class="form-group">
+                            <label>分类名</label>
+                            <input type="text" name="name" class="form-control">
+                            <small class="form-text text-muted"></small>
+                        </div>
+
+                         <div class="submit-box">
+                            <button type="submit" class="btn btn-primary">确定提交</button>
+                            <button type="button" onclick="window.history.back()" class="btn btn-outline-secondary">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

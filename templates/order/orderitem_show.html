@@ -1,0 +1,50 @@
+{% extends 'user/user_index.html' %}
+
+{% block table %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">订单数量</th>
+                    <th scope="col">商品id</th>
+                    <th scope="col">订单id</th>
+                    <th scope="col">客户id</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for orderitem in orderitems %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ orderitem.number }}</td>
+                    <td>{{ orderitem.pid }}</td>
+                    <td>{{ orderitem.oid }}</td>
+                    <td>{{ orderitem.uid }}</td>
+
+
+                    <td>
+
+                        <a class="del" href="{{ url_for('order.item_delete') }}?id={{ orderitem.id }}">删除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+{% endblock %}
+
+ {% block count %}
+            <span class="total float-left page-link">共{{ orderitems | length }}条</span>
+{% endblock %}
+
+{% block form_search %}
+    <form class="form-inline float-left" action="{{ url_for("order.item_search") }}" method="get">
+        <div class="form-group">
+            <input type="text" name="search" value="" class="form-control" placeholder="订单">
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="iconfont"></i>搜索</button>
+    </form>
+{% endblock %}
+
+ {% block add_btn %}
+{% endblock %}

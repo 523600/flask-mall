@@ -1,0 +1,26 @@
+{% extends 'user/user_create.html' %}
+
+
+{% block table %}
+        <div class="title-box">
+            <h5>属性展示</h5>
+        </div>
+        <div class="form-box">
+            <div class="row">
+                <div class="col-5">
+                    <form action="" method="post">
+
+                        {% for property in properties %}
+                        <div class="form-group">
+                            <label>属性名</label>
+                            <input type="text" name="name" class="form-control" value="{{ property.name }}">
+                            <small class="form-text text-muted"></small>
+                        </div>
+                        {% endfor %}
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}

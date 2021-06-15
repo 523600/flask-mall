@@ -1,0 +1,14 @@
+body {
+  background-image: url(1.png);
+}
+body .login {background-color: #bf0b0b;
+  width: 400px;
+  height: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  background-image: url(2.png);
+  padding: 40px;
+}
